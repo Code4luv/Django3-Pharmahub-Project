@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    Document Title
+    =============================================
+    -->
+
+
+  {% load static%}
+
+  <title>Pharmacy Adda</title>
+  <!--
+    Favicons
+    =============================================
+    -->
+  <link href="{% static 'assets/lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Template specific stylesheets-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="{% static 'assets/lib/animate.css/animate.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/components-font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/et-line-font/et-line-font.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/flexslider/flexslider.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/magnific-popup/dist/magnific-popup.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/simple-text-rotator/simpletextrotator.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/extra_style.css' %}" rel="stylesheet">
+  <!-- Main stylesheet and color file-->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <!--
+    Stylesheets
+    =============================================
+
+    -->
+  <!-- Default stylesheets-->
+  <link href="{% static 'assets/lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Template specific stylesheets-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="{% static 'assets/lib/animate.css/animate.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/components-font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/et-line-font/et-line-font.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/flexslider/flexslider.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/magnific-popup/dist/magnific-popup.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/lib/simple-text-rotator/simpletextrotator.css' %}" rel="stylesheet">
+  <!-- Main stylesheet and color file-->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <link id="color-scheme" href="{% static 'assets/css/colors/default.css' %}" rel="stylesheet">
+</head>
+</head>
+
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+  <main>
+    <div class="page-loader">
+      <div class="loader">Loading...</div>
+    </div>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span
+              class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span
+              class="icon-bar"></span></button><a class="navbar-brand" href="{% url 'home' %}">{{ user.username }}</a>
+        </div>
+        <div class="collapse navbar-collapse" id="custom-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/home">Home</a></li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+              <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
+                {% csrf_token %}
+                <button id="signOutBtn" type="submit">Logout</button>
+              </form>
+            </li>
+            {% endif %}
+
+
+
+
+            <!--li.dropdown.navbar-cart-->
+            <!--    a.dropdown-toggle(href='#', data-toggle='dropdown')-->
+            <!--        span.icon-basket-->
+            <!--        |-->
+            <!--        span.cart-item-number 2-->
+            <!--    ul.dropdown-menu.cart-list(role='menu')-->
+            <!--        li-->
+            <!--            .navbar-cart-item.clearfix-->
+            <!--                .navbar-cart-img-->
+            <!--                    a(href='#')-->
+            <!--                        img(src='assets/images/shop/product-9.jpg', alt='')-->
+            <!--                .navbar-cart-title-->
+            <!--                    a(href='#') Short striped sweater-->
+            <!--                    |-->
+            <!--                    span.cart-amount 2 &times; $119.00-->
+            <!--                    br-->
+            <!--                    |-->
+            <!--                    strong.cart-amount $238.00-->
+            <!--        li-->
+            <!--            .navbar-cart-item.clearfix-->
+            <!--                .navbar-cart-img-->
+            <!--                    a(href='#')-->
+            <!--                        img(src='assets/images/shop/product-10.jpg', alt='')-->
+            <!--                .navbar-cart-title-->
+            <!--                    a(href='#') Colored jewel rings-->
+            <!--                    |-->
+            <!--                    span.cart-amount 2 &times; $119.00-->
+            <!--                    br-->
+            <!--                    |-->
+            <!--                    strong.cart-amount $238.00-->
+            <!--        li-->
+            <!--            .clearfix-->
+            <!--                .cart-sub-totle-->
+            <!--                    strong Total: $476.00-->
+            <!--        li-->
+            <!--            .clearfix-->
+            <!--                a.btn.btn-block.btn-round.btn-font-w(type='submit') Checkout-->
+            <!--li.dropdown-->
+            <!--    a.dropdown-toggle(href='#', data-toggle='dropdown') Search-->
+            <!--    ul.dropdown-menu(role='menu')-->
+            <!--        li-->
+            <!--            .dropdown-search-->
+            <!--                form(role='form')-->
+            <!--                    input.form-control(type='text', placeholder='Search...')-->
+            <!--                    |-->
+            <!--                    button.search-btn(type='submit')-->
+            <!--                        i.fa.fa-search-->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="main">
+      <section class="module bg-dark-30" data-background="{% static 'assets/images/pharmacy_title.jpg' %}" id="home">
+        <div class="titan-caption">
+          <div class="caption-content">
+            <div class="font-alt mb-30 titan-title-size-1">Hello &amp; Welcome To</div>
+            <div class="font-alt mb-40 titan-title-size-4">Pharmacy Adda </div>
+
+          </div>
+        </div>
+      </section>
+      <section class="module">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-5 col-sm-offset-1 mb-sm-40">
+              <h4 class="font-alt">Login</h4>
+              <hr class="divider-w mb-10">
+              <h2>{{ error1 }}</h2>
+              <form class="form" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <input class="form-control" id="username" type="text" name="username" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="password" type="password" name="password" placeholder="Password" />
+                </div>
+                <div clss="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><b> Role </b></div>
+                    <select class="form-control input-lg" id="role" name="role" type="text" required="required">
+                      <option selected="Select Role">Select Role</option>
+                      <option value="D">Doctor</option>
+                      <option value="U">User</option>
+                      <option value="S">Shopkeeper</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+
+                  <button class="btn btn-round btn-b" name="login" type="submit">Login</button>
+                </div>
+
+              </form>
+            </div>
+            <div class="col-sm-5">
+              <h4 class="font-alt">Register</h4>
+              <hr class="divider-w mb-10">
+              <h2>{{ error }}</h2>
+              <form class="form" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <input class="form-control" id="E-mail" type="text" name="email" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="username" type="text" name="username" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="password1" type="password" name="password1" placeholder="Password" />
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="re-password" type="password" name="re-password"
+                    placeholder="Re-enter Password" />
+                </div>
+                <div clss="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><b> Role </b></div>
+                    <select class="form-control input-lg" id="role" name="role" type="text" required="required">
+                      <option selected="Select Role">Select Role</option>
+                      <option value="D">Doctor</option>
+                      <option value="U">User</option>
+                      <option value="S">Shopkeeper</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-block btn-round btn-b" type="submit">Register</button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+  </main>
+  <!--
+    JavaScripts
+    =============================================
+    -->
+  <script src="{% static 'assets/lib/jquery/dist/jquery.js' %}"></script>
+  <script src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/lib/wow/dist/wow.js' %}"></script>
+  <script src="{% static 'assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' %}"></script>
+  <script src="{% static 'assets/lib/isotope/dist/isotope.pkgd.js' %}"></script>
+  <script src="{% static 'assets/lib/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+  <script src="{% static 'assets/lib/flexslider/jquery.flexslider.js' %}"></script>
+  <script src="{% static 'assets/lib/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/lib/smoothscroll.js' %}"></script>
+  <script src="{% static 'assets/lib/magnific-popup/dist/jquery.magnific-popup.js' %}"></script>
+  <script src="{% static 'assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' %}"></script>
+  <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK2Axt8xiFYMBMDwwG1XzBQvEbYpzCvFU">
+  </script>
+  <script src="{% static 'assets/js/plugins.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>
